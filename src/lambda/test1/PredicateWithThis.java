@@ -1,14 +1,18 @@
 package lambda.test1;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 
 public class PredicateWithThis {
 
 	public static void main(String[] args) {
 
-		ArrayList<Person> pers = new ArrayList<>();
+		// Init List
+		List<Person> pers = new ArrayList<>();
 		pers.add(new Person("Piet", "Jansen"));
+		pers.add(new Person("Kees", "Plozen"));
+		// Init single Person
 		Person x = new Person ("Kees", "Plozen");
 	
 		// using variables that contain lambdas 
@@ -26,6 +30,8 @@ public class PredicateWithThis {
 			}
 		}));
 			
+		// using a stream
+		pers.forEach(p -> System.out.println("s" + p.givenname + "!"));
 	}
 	
 }
