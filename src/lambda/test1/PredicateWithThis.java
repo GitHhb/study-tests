@@ -3,6 +3,7 @@ package lambda.test1;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class PredicateWithThis {
 
@@ -31,7 +32,9 @@ public class PredicateWithThis {
 		}));
 			
 		// using a stream
-		pers.forEach(p -> System.out.println("s" + p.givenname + "!"));
+		pers.stream()
+			.filter( ((Predicate<Person>) p -> p.givenname.contains("i")).or(p -> p.givenname.contains("e")))
+			.forEach(p -> System.out.println("s" + p.givenname + "!"));
 	}
 	
 }
